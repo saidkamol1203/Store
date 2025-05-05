@@ -12,8 +12,15 @@ def login(request):
             user = form.get_user()
             login(request,user)
 
-            return HttpResponse(f"Username: f{request.user.username}, User type: f{request.user.user_type}")
+            if user.user_type == "ADMIN":
+                return redirect("admin_dashboard")
+            
+            return HttpResponse(
+                f"Username: f{request.user.username}, User type: f{request.user.user_type}")
     else:
         form = AuthenticationForm()
          
     return render(request, 'users/login.html', {'form':form})
+
+def admin_dashboard(request):
+    return render(request, "users/admin_dashboard.html", context= {})
