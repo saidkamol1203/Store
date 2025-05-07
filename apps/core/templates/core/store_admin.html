@@ -1,0 +1,123 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+
+{% block title %}Store Admin Dashboard | Multi-Shop Platform{% endblock %}
+{% block header_title %}My Store Dashboard{% endblock %}
+{% block dashboard_active %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+    .stat-card {
+        border-left: 4px solid;
+        border-radius: 4px;
+    }
+    .stat-products { border-color: #007bff; }
+    .stat-orders { border-color: #ffc107; }
+    .stat-customers { border-color: #28a745; }
+    .stat-revenue { border-color: #17a2b8; }
+    .dashboard-card {
+        transition: transform 0.3s;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .dashboard-card:hover {
+        transform: translateY(-5px);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid p-0">
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card stat-card stat-products h-100">
+                <div class="card-body">
+                    <h5 class="card-title">My Products</h5>
+                    <h2 class="display-4">24</h2>
+                    <p class="text-success mb-0"><i class="bi bi-arrow-up"></i> 10% this month</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card stat-orders h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Orders</h5>
+                    <h2 class="display-4">18</h2>
+                    <p class="text-danger mb-0"><i class="bi bi-arrow-down"></i> 2% this month</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card stat-customers h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Customers</h5>
+                    <h2 class="display-4">45</h2>
+                    <p class="text-success mb-0"><i class="bi bi-arrow-up"></i> 5% this month</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card stat-revenue h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Revenue</h5>
+                    <h2 class="display-4">$4,500</h2>
+                    <p class="text-success mb-0"><i class="bi bi-arrow-up"></i> 12% this month</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Recent Orders -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 dashboard-card">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0">Recent Orders</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div>
+                                <strong>#1001</strong> - Wireless Earbuds
+                                <br><small class="text-muted">John Doe - 2 days ago</small>
+                            </div>
+                            <span class="badge bg-success">Completed</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div>
+                                <strong>#1002</strong> - Bluetooth Speaker
+                                <br><small class="text-muted">Jane Smith - 3 days ago</small>
+                            </div>
+                            <span class="badge bg-warning text-dark">Pending</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div>
+                                <strong>#1003</strong> - Smartwatch
+                                <br><small class="text-muted">Ali Khan - 5 days ago</small>
+                            </div>
+                            <span class="badge bg-danger">Cancelled</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Store Activity -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 dashboard-card">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0">Store Activity</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Added new product: <strong>Gaming Mouse</strong></li>
+                        <li class="list-group-item">Updated stock for <strong>USB-C Charger</strong></li>
+                        <li class="list-group-item">Discount applied on <strong>Headphones</strong></li>
+                        <li class="list-group-item">Customer review added for <strong>Laptop Bag</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

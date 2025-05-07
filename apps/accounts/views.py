@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
-from django.http import HttpResponse
-# from django.contrib.auth.decorators import login_required
 
 
 def my_login(request):
@@ -11,20 +9,17 @@ def my_login(request):
 
         if form.is_valid():
             user = form.get_user()
-            login(request,user)
+            login(request, user)
+
+            # user_type bo‘yicha yo‘naltirish
+            if user.user_type == 'ADMIN':
+                return redirect('admin_dashboard')
+            elif user.user_type == 'STORE_ADMIN':
+                return redirect('store_admin')
+            else:
+                return redirect('index')  # Clientlar uchun
 
     else:
         form = AuthenticationForm()
 
     return render(request, 'accounts/login.html', {'form': form})
-
-
-# @login_required
-
-# @login_required
-# def store_admin_dashboard(request):
-#     return render(request,'users/store_admin_dashboard.html')
-
-# def store(request):
-#     return render(request,'users/store.html')
-
