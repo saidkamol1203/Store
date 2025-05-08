@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
 
@@ -8,6 +8,9 @@ def admin_dashboard(request):
 
 @login_required
 def store_admin(request):
+
+    if request.user.user_type != 'STORE_ADMIN':
+        return redirect('login')
     return render(request, "core/store_admin.html", {})
 
 def index(request):
