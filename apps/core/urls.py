@@ -7,5 +7,3 @@ urlpatterns = [
     path('super/admin/', admin_dashboard, name='admin_dashboard'),
 ]
 
-
- 
